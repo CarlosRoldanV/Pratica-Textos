@@ -84,10 +84,13 @@ public class Controlador {
     public void leer() {
 
         String palabras[] = palabra.split(" ");
+            System.out.println("");
         for (int i = 0; i < palabras.length; i++) {
 
             comprobar(palabras[i].toLowerCase());
+        
             System.out.print(palabras[i] + " ");
+            
 
         }
 
@@ -96,9 +99,9 @@ public class Controlador {
     public void escribir() throws IOException {
 
         Collections.sort(lista, new Comparator<Palabras>() {
-
             public int compare(Palabras p1, Palabras p2) {
                 return p1.getNombre().compareTo(p2.getNombre());
+
             }
 
         });
@@ -112,7 +115,6 @@ public class Controlador {
             System.out.println("");
             System.out.println("Resultado");
             for (Palabras p1 : lista) {
-
                 escribir.append(p1.getNombre() + " " + p1.getCantidad());
                 escribir.newLine();
                 System.out.println(p1.getNombre() + " " + p1.getCantidad());
