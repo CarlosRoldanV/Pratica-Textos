@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.controlador;
 
-import ec.edu.ups.modelo.Palabras;
+import ec.edu.ups.modelo.Palabra;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -24,7 +24,7 @@ import java.util.List;
 public class Controlador {
 
     private String palabra;
-    private List<Palabras> lista;
+    private List<Palabra> lista;
 
     public Controlador() {
         lista = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Controlador {
 
         } catch (FileNotFoundException errorArc) {
 
-            System.out.println("No existe el archivo");
+            System.out.println("No existe");
             System.out.println(errorArc.toString());
 
         } catch (IOException errorLeer) {
@@ -59,7 +59,7 @@ public class Controlador {
     public void comprobar(String palabra) {
 
         int cont = 0;
-        for (Palabras pala : lista) {
+        for (Palabra pala : lista) {
 
             if (pala.getNombre().equals(palabra)) {
 
@@ -73,7 +73,7 @@ public class Controlador {
 
         if (cont == 0) {
 
-            Palabras pal = new Palabras();
+            Palabra pal = new Palabra();
             pal.setNombre(palabra);
             pal.setCantidad(1);
             lista.add(pal);
@@ -98,8 +98,8 @@ public class Controlador {
 
     public void escribir() throws IOException {
 
-        Collections.sort(lista, new Comparator<Palabras>() {
-            public int compare(Palabras p1, Palabras p2) {
+        Collections.sort(lista, new Comparator<Palabra>() {
+            public int compare(Palabra p1, Palabra p2) {
                 return p1.getNombre().compareTo(p2.getNombre());
 
             }
@@ -108,13 +108,13 @@ public class Controlador {
 
         try {
 
-            String ruta = "Resultado.txt";
+            String ruta = "C:\\Users\\Carlos\\OneDrive\\Documentos\\NetBeansProjects\\Practica-Archivo\\src\\ec\\edu\\ups\\archivo\\Resultado.txt";
             FileWriter archivo = new FileWriter(ruta, false);
             BufferedWriter escribir = new BufferedWriter(archivo);
             System.out.println("");
             System.out.println("");
             System.out.println("Resultado");
-            for (Palabras p1 : lista) {
+            for (Palabra p1 : lista) {
                 escribir.append(p1.getNombre() + " " + p1.getCantidad());
                 escribir.newLine();
                 System.out.println(p1.getNombre() + " " + p1.getCantidad());
@@ -125,7 +125,7 @@ public class Controlador {
 
         } catch (IndexOutOfBoundsException error) {
 
-            System.out.println("No se pudo escribir");
+            System.out.println("No se pudo Escribir");
 
         }
     }

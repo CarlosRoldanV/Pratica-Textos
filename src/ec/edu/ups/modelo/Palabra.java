@@ -9,7 +9,7 @@ package ec.edu.ups.modelo;
  *
  * @author Carlos
  */
-public class Palabras {
+public class Palabra {
     private String nombre;
     private int cantidad;
     
